@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thank You</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #df3cd4, #ccf978);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            background: rgba(232, 239, 11, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            text-align: center;
+            max-width: 450px;
+            color: black;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            font-size: 50px;
+            color: #FFD700; /* Bright golden color */
+            text-shadow: 3px 3px 8px #FF6347, -3px -3px 8px #FF4500; /* Dual glow effect */
+            border: 4px solid transparent;
+            background: linear-gradient(90deg, #a060ea, #950e7c);
+            background-clip: padding-box; /* Stylish border effect */
+            padding: 10px;
+            border-radius: 20px; /* Smooth rounded corners */
+        }
+
+        .quote {
+            margin-top: 20px;
+            font-style: italic;
+            font-size: 20px;
+            color: #370acc;
+        }
+
+        img {
+            width: 180px;
+            border-radius: 50%;
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+        }
+
+        a {
+            display: inline-block;
+            background-color: #b731ec;
+            color: whitesmoke;
+            padding: 12px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            margin-top: 30px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0 15px #800fad;
+        }
+
+        a:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px #800fad;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: whitesmoke;
+            border-radius: 50%;
+            animation: fall 15s linear infinite;
+        }
+
+        @keyframes fall {
+            from { transform: translateY(-100vh) rotate(0); }
+            to { transform: translateY(100vh) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>❤️Thank You!❤️ </h1>
+
+        <p class="quote">"Adopting one pet may not change the world, but it will surely change that pet's world."🖤 </p>
+        <p>"Your love is a gift that transforms lives. You've given a pet a second chance at happiness!" 🌟</p>
+
+        <p>Your furry friend is wagging their tail with excitement! </p>
+        <p>Thank you for choosing to be a hero to a pet in need. Together, you're making the world a better place, one paw at a time. 🐾💖</p>
+
+        <a href="index.html">Back to Home</a>
+    </div>
+
+    <script>
+        function createConfetti() {
+            for (let i = 0; i < 30; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                document.body.appendChild(confetti);
+
+                setTimeout(() => {
+                    confetti.remove();
+                }, 12000);
+            }
+        }
+
+        window.onload = createConfetti;
+    </script>
+</body>
+</html>

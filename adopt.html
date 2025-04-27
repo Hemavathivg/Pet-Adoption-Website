@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adopt Your Pet</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #ffdde1, #ee9ca7);
+      background-size: cover;
+      background-attachment: fixed;
+      color: #dcd7da;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      animation: fadeIn 2s ease;
+      overflow-x: hidden;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    h1 {
+      color: #540a4e;
+      font-size: 45px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    }
+
+    .adopt-info {
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: #8a1313;
+    }
+
+    .form-container {
+      background: #540a4e;
+      border-radius: 20px;
+      padding: 30px;
+      margin: 30px auto;
+      width: 400px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .form-container:hover {
+      transform: scale(1.02);
+    }
+
+    input[type="text"], input[type="email"], input[type="phone"], input[type="submit"] {
+      padding: 12px;
+      width: 100%;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border: 1px solid #930748;
+      box-sizing: border-box;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus, input[type="email"]:focus, input[type="phone"]:focus {
+      border-color: #6a11cb;
+      outline: none;
+      box-shadow: 0 0 8px #b721ff;
+    }
+
+    input[type="submit"] {
+      background: linear-gradient(to right, #e39aa6, #e078a3);
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      transition: background 0.5s ease;
+    }
+
+    input[type="submit"]:hover {
+      background: linear-gradient(to right, #d673bd, #e467c4);
+    }
+
+    .back-btn {
+      background: linear-gradient(to right, #b84c7c, #c95b92);
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 30px;
+      display: inline-block;
+      transition: background 0.3s ease, transform 0.3s ease;
+      margin: 10px;
+      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(to right, #a2245f, #c92f89);
+      transform: scale(1.1);
+    }
+
+    .button-container {
+      margin-top: 20px;
+    }
+
+    .pet-image {
+      margin-top: 20px;
+    }
+
+    .pet-image img {
+      width: 220px;
+      height: auto;
+      border-radius: 15px;
+      border: 3px solid #391313;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: transform 0.5s ease;
+    }
+
+    .pet-image img:hover {
+      transform: scale(1.05);
+    }
+
+    .pet-details {
+      margin-top: 10px;
+      font-size: 22px;
+      color: #440860;
+    }
+
+    /* Falling Stars */
+    .star {
+      position: absolute;
+      top: -10px;
+      width: 8px;
+      height: 8px;
+      background: #540a4e;
+      border-radius: 50%;
+      box-shadow: 0 0 10px white;
+      animation: fall linear infinite;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) translateX(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) translateX(50px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🐾 Thank You for Choosing Adoption! 🐾</h1>
+
+  <div class="adopt-info">
+    <p>Fill out the form and bring home your bundle of joy!</p>
+  </div>
+
+  <div class="pet-image">
+    <img id="selectedPetImage" src="" alt="Selected Pet">
+  </div>
+
+  <div class="pet-details" id="petDetails">
+    <!-- Pet Name and Price will appear here -->
+  </div>
+
+  <div class="form-container">
+    <form id="adoptForm" onsubmit="validateForm(event)">
+      <label for="name">Your Name:</label><br>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required><br>
+
+      <label for="email">Your Email:</label><br>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required><br>
+
+      <label for="phone">Your Phone Number:</label><br>
+      <input type="phone" id="phone" name="phone" placeholder="Enter your phone number" required><br>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <div class="button-container">
+    <a href="pets.html" class="back-btn">← Back to Pets Gallery</a>
+    <a href="index.html" class="back-btn">← Back to Home</a>
+  </div>
+
+  <script>
+    function validateForm(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+
+  const nameRegex = /^[A-Za-z\s]{3,}$/; 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const phoneRegex = /^\d{10}$/;
+
+  if (!nameRegex.test(name)) {
+    alert("Please enter a valid name (only letters, at least 3 characters).");
+    return;
+  }
+
+  if (!emailRegex.test(email)) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  if (!phoneRegex.test(phone)) {
+    alert("Please enter a valid 10-digit phone number.");
+    return;
+  }
+
+  // Now correctly set pet name and price based on image
+  const urlParams = new URLSearchParams(window.location.search);
+  const petImage = urlParams.get('img');
+
+  const petData = {
+    "dog.jpg": { name: "Dog", price: "₹12,000" },
+    "cat.jpg": { name: "Cat", price: "₹8,000" },
+    "rabbit.jpg": { name: "Rabbit", price: "₹2,500" },
+    "parrot.jpg": { name: "Parrot", price: "₹3,500" },
+    "pomerian.webp": { name: "Pomerian", price: "₹15,000" },
+    "hamster.jpg": { name: "Hamster", price: "₹1,200" },
+    "turtle.jpg": { name: "Turtle", price: "₹2,000" },
+    "goldfish.jpg": { name: "Gold Fish", price: "₹700" },
+    "puppy.jpg": { name: "Puppy", price: "₹18,000" },
+    "kitten.webp": { name: "Kitten", price: "₹7,000" },
+    "lovebirds.jpg": { name: "Lovebird", price: "₹2,800" },
+    "bettafish.jpg": { name: "Betta Fish", price: "₹500" },
+    "monkey.jpg": { name: "Monkey", price: "₹30,000" },
+    "guineapig.jpg": { name: "Guinea Pig", price: "₹1,800" },
+    "bulldog.webp": { name: "Bull Dog", price: "₹22,000" }
+  };
+
+  const petInfo = petData[petImage];
+
+  if (!petInfo) {
+    alert("Pet details not found!");
+    return;
+  }
+
+  const petName = petInfo.name;
+  const petPrice = petInfo.price;
+
+  window.location.href = `confirmation.html?name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&img=${encodeURIComponent(petImage)}&pet=${encodeURIComponent(petName)}&price=${encodeURIComponent(petPrice)}`;
+}
+
+
+    function displayPetImage() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const petImage = urlParams.get('img');
+
+      if (petImage) {
+        document.getElementById('selectedPetImage').src = petImage;
+
+        const petData = {
+          "dog.jpg": { name: "Dog", price: "₹12,000" },
+          "cat.jpg": { name: "Cat", price: "₹8,000" },
+          "rabbit.jpg": { name: "Rabbit", price: "₹2,500" },
+          "parrot.jpg": { name: "Parrot", price: "₹3,500" },
+          "pomerian.webp": { name: "Pomerian", price: "₹15,000" },
+          "hamster.jpg": { name: "Hamster", price: "₹1,200" },
+          "turtle.jpg": { name: "Turtle", price: "₹2,000" },
+          "goldfish.jpg": { name: "Gold Fish", price: "₹700" },
+          "puppy.jpg": { name: "Puppy", price: "₹18,000" },
+          "kitten.webp": { name: "Kitten", price: "₹7,000" },
+          "lovebirds.jpg": { name: "Lovebird", price: "₹2,800" },
+          "bettafish.jpg": { name: "Betta Fish", price: "₹500" },
+          "monkey.jpg": { name: "Monkey", price: "₹30,000" },
+          "guineapig.jpg": { name: "Guinea Pig", price: "₹1,800" },
+          "bulldog.webp": { name: "Bull Dog", price: "₹22,000" }
+        };
+
+        const petInfo = petData[petImage];
+
+        if (petInfo) {
+          document.getElementById('petDetails').innerHTML = `
+            <strong>${petInfo.name}</strong><br>Price: <strong>${petInfo.price}</strong>
+          `;
+        } else {
+          document.getElementById('petDetails').innerHTML = "Pet details not found!";
+        }
+      }
+    }
+
+    window.onload = displayPetImage;
+
+    // Falling Stars Effect
+    function createStar() {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.left = Math.random() * window.innerWidth + 'px';
+      star.style.animationDuration = (2 + Math.random() * 3) + 's'; // Random speed
+      document.body.appendChild(star);
+
+      setTimeout(() => {
+        star.remove();
+      }, 5000); // Remove after 5s
+    }
+
+    setInterval(createStar, 300); // Every 300ms one star
+  </script>
+
+</body>
+</html>

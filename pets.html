@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Gallery</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+
+        h1 {
+            color: #f1c40f;
+            font-size: 40px;
+            margin-top: 50px;
+            text-align: center;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+        }
+
+        .pet-gallery {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            padding: 20px;
+        }
+
+        .pet-card {
+            background-color: #D8BFD8;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .pet-card:hover {
+            transform: scale(1.05);
+        }
+
+        .pet-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid white;
+        }
+
+        .pet-card h3 {
+            font-size: 24px;
+            color: #34495e;
+            margin: 20px 0 10px;
+        }
+
+        .pet-price {
+            font-size: 20px;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .adopt-btn {
+            background-color: gold;
+            color: black;
+            padding: 12px 25px;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 30px;
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .adopt-btn:hover {
+            background-color: orange;
+        }
+
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background-color: #e67e22;
+            color: #fff;
+            border-radius: 30px;
+            text-decoration: none;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-home:hover {
+            background-color: #d35400;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Choose Your New Pet!</h1>
+
+    <div class="pet-gallery">
+        <div class="pet-card">
+            <img src="dog.jpg" alt="Dog">
+            <h3>Dog</h3>
+            <div class="pet-price">₹12,000</div>
+            <a href="adopt.html?img=dog.jpg" class="adopt-btn">Adopt Me</a>
+        </div>
+        <div class="pet-card">
+            <img src="cat.jpg" alt="Cat">
+            <h3>Cat</h3>
+            <div class="pet-price">₹8,000</div>
+            <a href="adopt.html?img=cat.jpg" class="adopt-btn">Adopt Me</a>
+        </div>
+        <div class="pet-card">
+            <img src="rabbit.jpg" alt="Rabbit">
+            <h3>Rabbit</h3>
+            <div class="pet-price">₹2,500</div>
+            <a href="adopt.html?img=rabbit.jpg" class="adopt-btn">Adopt Me</a>
+        </div>
+        <div class="pet-card">
+            <img src="parrot.jpg" alt="Parrot">
+            <h3>Parrot</h3>
+            <div class="pet-price">₹3,500</div>
+            <a href="adopt.html?img=parrot.jpg" class="adopt-btn">Adopt Me</a>
+        </div>
+        <div class="pet-card">
+            <img src="pomerian.webp" alt="Pomerian">
+            <h3>Pomerian</h3>
+            <div class="pet-price">₹15,000</div>
+            <a href="adopt.html?img=pomerian.webp" class="adopt-btn">Adopt Me</a>
+        </div>
+        <div class="pet-card">
+            <img src="hamster.jpg" alt="Hamster">
+            <h3>Hamster</h3>
+            <div class="pet-price">₹1,200</div>
+            <a href="adopt.html?img=hamster.jpg" class="adopt-btn">Adopt Me</a>
+        </div>
+        <div class="pet-card">
+            <img src="turtle.jpg" alt="Turtle">
+            <h3>Turtle</h3>
+            <div class="pet-price">₹2,000</div>
+            <a href="adopt.html?img=turtle.jpg" class="adopt-btn">Adopt Me</a>
+        </div>
+        <div class="pet-card">
+            <img src="goldfish.jpg" alt="Goldfish">
+            <h3>Gold Fish</h3>
+            <div class="pet-price">₹700</div>
+            <a href="adopt.html?img=goldfish.jpg" class="adopt-btn">Adopt Me</a>
+        </div>
+        <div class="pet-card">
+            <img src="puppy.jpg" alt="Puppy">
+            <h3>Puppy</h3>
+            <div class="pet-price">₹18,000</div>
+            <a href="adopt.html?img=puppy.jpg" class="adopt-btn">Adopt Me</a>
+        </div>
+        <div class="pet-card">
+            <img src="kitten.webp" alt="Kitten">
+            <h3>Kitten</h3>
+            <div class="pet-price">₹7,000</div>
+            <a href="adopt.html?img=kitten.webp" class="adopt-btn">Adopt Me</a>
+        </div>
+        <div class="pet-card">
+            <img src="lovebirds.jpg" alt="Lovebird">
+            <h3>Lovebird</h3>
+            <div class="pet-price">₹2,800</div>
+            <a href="adopt.html?img=lovebirds.jpg" class="adopt-btn">Adopt Me</a>
+        </div>
+        <div class="pet-card">
+            <img src="bettafish.jpg" alt="Bettafish">
+            <h3>Betta Fish</h3>
+            <div class="pet-price">₹500</div>
+            <a href="adopt.html?img=bettafish.jpg" class="adopt-btn">Adopt Me</a>
+        </div>
+        <div class="pet-card">
+            <img src="monkey.jpg" alt="Monkey">
+            <h3>Monkey</h3>
+            <div class="pet-price">₹30,000</div>
+            <a href="adopt.html?img=monkey.jpg" class="adopt-btn">Adopt Me</a>
+        </div>
+        <div class="pet-card">
+            <img src="guineapig.jpg" alt="Guinea Pig">
+            <h3>Guinea Pig</h3>
+            <div class="pet-price">₹1,800</div>
+            <a href="adopt.html?img=guineapig.jpg" class="adopt-btn">Adopt Me</a>
+        </div>
+        <div class="pet-card">
+            <img src="bulldog.webp" alt="Bull dog">
+            <h3>Bull Dog</h3>
+            <div class="pet-price">₹22,000</div>
+            <a href="adopt.html?img=bulldog.webp" class="adopt-btn">Adopt Me</a>
+        </div>
+    </div>
+
+    <a href="index.html" class="back-home">Back to Home</a>
+
+</body>
+</html>

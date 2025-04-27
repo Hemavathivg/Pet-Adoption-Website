@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adoption Confirmation</title>
+  <style>
+    body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #ffdde1, #ee9ca7);
+  background-size: cover;
+  background-attachment: fixed;
+  color: #dcd7da;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh; /* Ensure full screen height */
+}
+
+h1 {
+  color: #540a4e;
+  font-size: 50px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.confirm-info {
+  font-size: 24px;
+  margin-bottom: 30px;
+  color: #8a1313;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.details-container {
+  background: #540a4e;
+  border-radius: 20px;
+  padding: 40px;
+  margin: 30px auto;
+  width: 90%; /* Width adjusted to look good on mobile and desktop */
+  max-width: 800px; /* Limiting the maximum width */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.details-container p {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #f1f1f1;
+}
+
+.pet-image img {
+  width: 230px;
+  height: auto;
+  border-radius: 15px;
+  border: 5px solid #391313;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  margin-top: 20px;
+}
+
+.button-container {
+  margin-top: 40px;
+}
+
+.back-btn {
+  background: linear-gradient(to right, #b84c7c, #c95b92);
+  color: white;
+  padding: 12px 25px;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 30px;
+  display: inline-block;
+  transition: background 0.3s ease, transform 0.3s ease;
+  margin: 10px;
+  box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+}
+
+.back-btn:hover {
+  background: linear-gradient(to right, #a2245f, #c92f89);
+  transform: scale(1.1);
+}
+
+  </style>
+</head>
+<body>
+
+  <h1>🐾 Adoption Successful! 🐾</h1>
+
+  <div class="confirm-info">
+    <p> Here are your details:</p>
+  </div>
+
+  <div class="details-container">
+    <div class="user-details">
+      <p><strong>Name:</strong> <span id="userName"></span></p>
+      <p><strong>Email:</strong> <span id="userEmail"></span></p>
+      <p><strong>Phone:</strong> <span id="userPhone"></span></p>
+      <p><strong>Adopted Pet:</strong> <span id="adoptedPet"></span></p>
+      <p><strong>Price:</strong> <span id="adoptedPrice"></span></p>
+    </div>
+
+    <div class="pet-image">
+      <img id="adoptedPetImage" src="" alt="Adopted Pet">
+    </div>
+
+    <div class="button-container">
+      <a href="thankyou.html" class="back-btn">Proceed to Thank You Page</a>
+      <a href="pets.html" class="back-btn">← Back to Pets Gallery</a>
+      <a href="index.html" class="back-btn">← Back to Home</a>
+    </div>
+    
+  </div>
+
+  <script>
+    function displayAdoptionDetails() {
+      const urlParams = new URLSearchParams(window.location.search);
+
+      const userName = urlParams.get('name');
+      const userEmail = urlParams.get('email');
+      const userPhone = urlParams.get('phone');
+      const petName = urlParams.get('pet');
+      const petPrice = urlParams.get('price');
+      const petImage = urlParams.get('img');
+
+      document.getElementById('userName').innerText = userName;
+      document.getElementById('userEmail').innerText = userEmail;
+      document.getElementById('userPhone').innerText = userPhone;
+      document.getElementById('adoptedPet').innerText = petName;
+      document.getElementById('adoptedPrice').innerText = petPrice;
+      document.getElementById('adoptedPetImage').src = petImage;
+    }
+
+    window.onload = displayAdoptionDetails;
+  </script>
+
+</body>
+</html>
